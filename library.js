@@ -3,8 +3,16 @@ var library = (function() {
 	  
 	TimeStamp: (function(){
    	  return {
-		UnixTimestamp: function(){},
-		UnixMillisecond: function(){}
+		UnixTimestamp: function(){
+			var date = new Date();
+			var unix = date.getTime();
+			return String(unix).substr(0,9);
+		},
+		UnixMillisecond: function(){
+			var date = new Date();
+			var msec = date.getTime();
+			return String(msec);
+		}
 	  }
 	})(),
 	
@@ -192,21 +200,15 @@ var library = (function() {
 				return String(currentMonth);
 			},
 			AbrOfCurrentMonth: function(){
-				var date = new Date();
-				var currentMonth = date.getMonth() + 1;
-				if (currentMonth < 10) {
-					currentMonth = 'Sep';
-				}
-				return String(currentMonth);	
-			},
+               var date = new Date()
+               var currentMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+               return currentMonth[ date.getMonth() ]
+           },
 			CurrentMonth: function(){
-				var date = new Date();
-				var currentMonth = date.getMonth() + 1;
-				if (currentMonth < 10) {
-					currentMonth = 'September';
-				}
-				return String(currentMonth);
-			}
+               var date = new Date()
+               var currentMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+               return currentMonth[ date.getMonth() ]
+           },
 		}
 	})(),
 	Year: (function(){
